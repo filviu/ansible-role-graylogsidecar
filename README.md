@@ -20,7 +20,7 @@ Example Playbook
       become: yes
       
       roles:
-        - role: silviuvulcan.graylog-sidecar
+        - role: silviuvulcan.graylogsidecar
           graylog_server_url: http://graylog.example.com:9000/api/
           graylog_server_api_token: xxx
 
