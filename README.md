@@ -33,4 +33,4 @@ License
 Author Information
 ------------------
 
-https://github.com/silviuvulcan/ansible-role-filebeat/
+https://github.com/silviuvulcan/ansible-role-graylogsidecar/
