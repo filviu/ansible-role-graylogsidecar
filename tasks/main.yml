@@ -1,0 +1,25 @@
+---
+
+# Variable configuration.
+- include_tasks: variables.yml
+
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Install the service
+  shell:
+    cmd: graylog-sidecar -service install
+    creates: /etc/systemd/system/graylog-sidecar.service
+  notify: restart graylog-sidecar
+
+- name: Setup /etc/graylog/sidecar/sidecar.yml
+  template:
+    src: "{{ sidecar_config_template }}"
+    dest: /etc/graylog/sidecar/sidecar.yml
+    mode: 0640
+    owner: root
+    group: root
+  notify: restart graylog-sidecar

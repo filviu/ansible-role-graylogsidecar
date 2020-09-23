@@ -1,0 +1,2 @@
+---
+sidecar_config_template: sidecar.yml.j2

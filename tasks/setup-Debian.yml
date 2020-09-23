@@ -1,0 +1,5 @@
+---
+- name: Ensure graylog sidecar is installed
+  apt:
+    deb: "{{ graylog_sidecar_url }}"
+    state: present

@@ -1,0 +1,6 @@
+---
+
+- name: Ensure graylog sidecar is installed
+  yum:
+    name: "{{ graylog_sidecar_url }}"
+    state: present
