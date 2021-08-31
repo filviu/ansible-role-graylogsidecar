@@ -1,2 +1,5 @@
 ---
+sidecar_graylog_server_url: example.com
+sidecar_graylog_server_api_token: xxx
+
 sidecar_config_template: sidecar.yml.j2

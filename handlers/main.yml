@@ -1,8 +1,7 @@
 ---
   # The order here matters
   - name: restart graylog-sidecar
-    service: 
+    service:
       name: graylog-sidecar
       enabled: yes
       state: restarted
-    

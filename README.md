@@ -1,36 +1,45 @@
-Role Name
-=========
+# Ansible Role: Graylog Sidecar
 
-Sets up Graylog Sidecar
+[![CI](https://github.com/silviuvulcan/ansible-role-graylogsidecar/workflows/CI/badge.svg?event=push)](https://github.com/silviuvulcan/ansible-role-graylogsidecar/actions?query=workflow%3ACI)
 
-Role Variables
---------------
+Sets up Graylog Sidecar.
 
-> **graylog_server_url** url of Graylog server API  
-> **graylog_server_api_token** API token for graylog
+## Requirements
 
-Check defaults/main for other variables that can be adjusted.
+None.
 
-Example Playbook
-----------------
+## Role Variables
 
-    ---
-    - name: Graylog Sidecar
-      hosts: all
-      become: yes
-      
-      roles:
-        - role: silviuvulcan.graylogsidecar
-          graylog_server_url: http://graylog.example.com:9000/api/
-          graylog_server_api_token: xxx
+See `defaults/main.yml`:
 
-License
--------
+    sidecar_graylog_server_url: example.com
+    sidecar_graylog_server_api_token: xxx
 
-(BSD, MIT)
+    sidecar_config_template: sidecar.yml.j2
+
+Template file to use for configuration. The default supplied should work very well.
+
+## Dependencies
+
+None.
+
+## Example Playbook
+
+```yaml
+---
+- hosts: all
+
+  roles:
+    - role: silviuvulcan.graylogsidecar
+      sidecar_graylog_server_url: http://1.2.3.4:9000/api/
+      sidecar_graylog_server_api_token: xxx
+```
+
+## License
+
+MIT / BSD
 
 
-Author Information
-------------------
+## Author Information
 
-https://github.com/silviuvulcan/ansible-role-graylogsidecar/
+This role was created by Silviu Vulcan to scratch his own itch.

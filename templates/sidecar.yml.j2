@@ -1,9 +1,9 @@
 # The URL to the Graylog server API.
-server_url: "{{ graylog_server_url }}"
+server_url: "{{ sidecar_graylog_server_url }}"
 
 # The API token to use to authenticate against the Graylog server API.
 # This field is mandatory
-server_api_token: "{{ graylog_server_api_token }}"
+server_api_token: "{{ sidecar_graylog_server_api_token }}"
 
 # The node ID of the sidecar. This can be a path to a file or an ID string.
 # If set to a file and the file doesn't exist, the sidecar will generate an
