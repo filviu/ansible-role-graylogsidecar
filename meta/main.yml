@@ -13,11 +13,6 @@ galaxy_info:
         - stretch
         - buster
         - bullseye
-    - name: Ubuntu
-      versions:
-        - xenial
-        - bionic
-        - focal
     - name: EL
       versions:
         - 7
