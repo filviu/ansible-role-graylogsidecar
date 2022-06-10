@@ -13,4 +13,4 @@
       when: ansible_os_family == 'RedHat'
 
   roles:
-    - role: silviuvulcan.graylogsidecar
+    - role: filviu.graylogsidecar
