@@ -5,3 +5,8 @@
       name: graylog-sidecar
       enabled: yes
       state: restarted
+    listen: "restart graylog"
+  - name: sleep after graylog restart
+    ansible.builtin.pause:
+      seconds: 5
+    listen: "restart graylog"

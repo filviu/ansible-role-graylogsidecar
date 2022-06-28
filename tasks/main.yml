@@ -9,17 +9,28 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install the service
+- name: setup | install the service
   command:
     cmd: graylog-sidecar -service install
     creates: /etc/systemd/system/graylog-sidecar.service
-  notify: restart graylog-sidecar
+  notify: restart graylog
 
-- name: Setup /etc/graylog/sidecar/sidecar.yml
+- name: setup | deploy /etc/graylog/sidecar/sidecar.yml
   template:
     src: "{{ sidecar_config_template }}"
     dest: /etc/graylog/sidecar/sidecar.yml
     mode: 0640
     owner: root
     group: root
-  notify: restart graylog-sidecar
+  notify: restart graylog
+
+- name: meta | Flush handlers
+  meta: flush_handlers
+
+- name: setup | collector configuration
+  include_tasks: setup-collector-configuration.yml
+  loop: "{{ sidecar_collector_config | default([]) }}"
+  loop_control:
+    label:
+      - "{{ item.collector }}"
+      - "{{ item.configuration }}"
