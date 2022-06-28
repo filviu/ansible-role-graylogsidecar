@@ -1,6 +1,6 @@
 # Ansible Role: Graylog Sidecar
 
-[![CI](https://github.com/silviuvulcan/ansible-role-graylogsidecar/workflows/CI/badge.svg?event=push)](https://github.com/filviu/ansible-role-graylogsidecar/actions?query=workflow%3ACI)
+[![CI](https://github.com/filviu/ansible-role-graylogsidecar/workflows/CI/badge.svg?event=push)](https://github.com/filviu/ansible-role-graylogsidecar/actions?query=workflow%3ACI)
 
 Sets up Graylog Sidecar and optionally configures the collector for the node(s) via the Graylog API.
 
