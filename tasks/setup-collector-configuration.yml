@@ -24,6 +24,14 @@
     password: token
   register: nodes_out
 
+#- name: debug
+#  debug: 
+#    msg: 
+#    - "Collectors {{ collectors_out }}"
+#    - "Configs: {{ configurations_out }}"
+#    - "Nodes: {{ nodes_out }}"
+#    - "JSON: {{ nodes_out.json | community.general.json_query('sidecars') | length }}"
+
 - name: setup | collector configuration for node
   ansible.builtin.uri:
     url: "{{ sidecar_graylog_server_api_url }}/sidecars/configurations"
@@ -48,6 +56,7 @@
     headers:
       X-Requested-By: ansible
     status_code: 202
+  when: nodes_out.json | community.general.json_query('sidecars') | length>0
   vars:
     collquery: "collectors[?name=='{{ item.collector }}'].id"
     confquery: "configurations[?name=='{{ item.configuration }}'].id"
