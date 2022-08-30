@@ -1,13 +1,15 @@
 ---
 sidecar_graylog_server_api_url: https://example.com/api
 sidecar_graylog_server_api_token: xxx
-sidecar_graylog_server_api_admin_token: yyy
 
 sidecar_config_template: sidecar.yml.j2
+
+# only required if you define sidecar_collector_config below
+sidecar_graylog_server_api_admin_token: yyy
 
 # optional: what configurations to apply to collectors for node(s).
 # ensure you have unique names for collectors and configurations
 #
-#sidecar_collector_config:
-#  - collector: collector-name
-#    configuration: collector-config-name
+# sidecar_collector_config:
+#   - collector: collector-name
+#     configuration: collector-config-name

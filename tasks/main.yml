@@ -10,13 +10,13 @@
   when: ansible_os_family == 'Debian'
 
 - name: setup | install the service
-  command:
+  ansible.builtin.command:
     cmd: graylog-sidecar -service install
     creates: /etc/systemd/system/graylog-sidecar.service
   notify: restart graylog
 
 - name: setup | deploy /etc/graylog/sidecar/sidecar.yml
-  template:
+  ansible.builtin.template:
     src: "{{ sidecar_config_template }}"
     dest: /etc/graylog/sidecar/sidecar.yml
     mode: 0640
@@ -25,7 +25,7 @@
   notify: restart graylog
 
 - name: meta | Flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: setup | collector configuration
   include_tasks: setup-collector-configuration.yml

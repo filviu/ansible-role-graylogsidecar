@@ -1,5 +1,5 @@
 ---
 - name: Ensure graylog sidecar is installed
-  apt:
+  ansible.builtin.apt:
     deb: "{{ graylog_sidecar_url }}"
     state: present

@@ -1,41 +1,41 @@
 ---
 - name: debug
-  debug:
+  ansible.builtin.debug:
     msg: Collector {{ item.collector }} with config {{ item.configuration }}
 
 - name: get | collectors
   ansible.builtin.uri:
     url: "{{ sidecar_graylog_server_api_url }}/sidecar/collectors"
-    user: "{{ sidecar_graylog_server_api_token }}"
+    ansible.builtin.user: "{{ sidecar_graylog_server_api_token }}"
     password: token
   register: collectors_out
 
 - name: get | configurations
   ansible.builtin.uri:
     url: "{{ sidecar_graylog_server_api_url }}/sidecar/configurations?page=1&per_page=999&sort=name&order=asc"
-    user: "{{ sidecar_graylog_server_api_token }}"
+    ansible.builtin.user: "{{ sidecar_graylog_server_api_token }}"
     password: token
   register: configurations_out
 
 - name: get | nodes
   ansible.builtin.uri:
     url: "{{ sidecar_graylog_server_api_url }}/sidecars?page=1&per_page=50&query=node_name%3A{{ inventory_hostname }}&sort=node_name&order=asc&only_active=true"
-    user: "{{ sidecar_graylog_server_api_admin_token }}"
+    ansible.builtin.user: "{{ sidecar_graylog_server_api_admin_token }}"
     password: token
   register: nodes_out
 
-#- name: debug
-#  debug: 
-#    msg: 
-#    - "Collectors {{ collectors_out }}"
-#    - "Configs: {{ configurations_out }}"
-#    - "Nodes: {{ nodes_out }}"
-#    - "JSON: {{ nodes_out.json | community.general.json_query('sidecars') | length }}"
+# - name: debug
+#   ansible.builtin.debug:
+#     msg:
+#     - "Collectors {{ collectors_out }}"
+#     - "Configs: {{ configurations_out }}"
+#     - "Nodes: {{ nodes_out }}"
+#     - "JSON: {{ nodes_out.json | community.general.json_query('sidecars') | length }}"
 
 - name: setup | collector configuration for node
   ansible.builtin.uri:
     url: "{{ sidecar_graylog_server_api_url }}/sidecars/configurations"
-    user: "{{ sidecar_graylog_server_api_token }}"
+    ansible.builtin.user: "{{ sidecar_graylog_server_api_token }}"
     password: token
     method: PUT
     body: >-

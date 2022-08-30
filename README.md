@@ -37,7 +37,7 @@ None.
 - hosts: all
 
   roles:
-    - role: silviuvulcan.graylogsidecar
+    - role: filviu.graylogsidecar
       sidecar_graylog_server_api_url: http://1.2.3.4:9000/api/
       sidecar_graylog_server_api_token: xxx
       sidecar_graylog_server_api_admin_token: yyy
