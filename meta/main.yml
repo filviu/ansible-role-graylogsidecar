@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: graylogsidecar
-  author: silviuvulcan
+  author: filviu
   description: Graylog Sidecar service.
   license: "license (BSD, MIT)"
 
