@@ -1,21 +1,24 @@
 ---
 
 # Variable configuration.
-- include_tasks: variables.yml
+- name: Load distribution specific variables
+  ansible.builtin.import_tasks: variables.yml
 
-- include: setup-RedHat.yml
+- name: Setup RHEL specific tasks
+  ansible.builtin.import_tasks: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
 
-- include: setup-Debian.yml
+- name: Setup Debian specific tasks
+  ansible.builtin.import_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: setup | install the service
+- name: Ensure service is installed
   ansible.builtin.command:
     cmd: graylog-sidecar -service install
     creates: /etc/systemd/system/graylog-sidecar.service
   notify: restart graylog
 
-- name: setup | deploy /etc/graylog/sidecar/sidecar.yml
+- name: Setup /etc/graylog/sidecar/sidecar.yml
   ansible.builtin.template:
     src: "{{ sidecar_config_template }}"
     dest: /etc/graylog/sidecar/sidecar.yml
@@ -24,11 +27,11 @@
     group: root
   notify: restart graylog
 
-- name: meta | Flush handlers
+- name: Flush handlers
   ansible.builtin.meta: flush_handlers
 
-- name: setup | collector configuration
-  include_tasks: setup-collector-configuration.yml
+- name: Setup collector configuration
+  ansible.builtin.include_tasks: setup-collector-configuration.yml
   args:
     apply:
       delegate_to: localhost

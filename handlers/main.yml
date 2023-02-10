@@ -1,12 +1,12 @@
 ---
 # The order here matters
-- name: restart graylog-sidecar
+- name: Restart graylog-sidecar
   ansible.builtin.service:
     name: graylog-sidecar
     enabled: yes
     state: restarted
   listen: "restart graylog"
-- name: sleep after graylog restart
+- name: Sleep after graylog restart
   ansible.builtin.pause:
     seconds: 5
   listen: "restart graylog"
