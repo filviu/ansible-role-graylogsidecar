@@ -40,9 +40,10 @@ jobs:
       matrix:
         distro:
           - centos8
-          - centos7
-          - debian11
           - debian10
+          - debian11
+          - debian12
+          - ubuntu2204
 
     steps:
       - name: Check out the codebase.
