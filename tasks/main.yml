@@ -35,6 +35,7 @@
   args:
     apply:
       delegate_to: localhost
+      become: false
   loop: "{{ sidecar_collector_config | default([]) }}"
   loop_control:
     label: "{{ item.collector }} - {{ item.configuration }}"
